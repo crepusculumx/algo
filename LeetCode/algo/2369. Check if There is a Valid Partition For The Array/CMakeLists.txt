@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.27)
+project(2369__Check_if_There_is_a_Valid_Partition_For_The_Array)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(2369__Check_if_There_is_a_Valid_Partition_For_The_Array main.cpp)
