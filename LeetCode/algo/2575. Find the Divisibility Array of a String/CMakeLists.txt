@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.27)
+project(2575__Find_the_Divisibility_Array_of_a_String)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(2575__Find_the_Divisibility_Array_of_a_String main.cpp)
