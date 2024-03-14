@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.27)
+project(2834__Find_the_Minimum_Possible_Sum_of_a_Beautiful_Array)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(2834__Find_the_Minimum_Possible_Sum_of_a_Beautiful_Array main.cpp)
