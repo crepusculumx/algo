@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-
 using namespace std;
 
 struct Edge {
@@ -9,31 +8,45 @@ struct Edge {
   Edge(int v1, int w1) : v(v1), w(w1) {}
 };
 
+struct Node {
+  int id;
+  int dis;
+  Node(int id, int dis) : id(id), dis(dis) {}
+
+  bool operator<(const Node &rhs) const {
+    return dis < rhs.dis;
+  }
+  bool operator>(const Node &rhs) const {
+    return rhs < *this;
+  }
+  bool operator<=(const Node &rhs) const {
+    return !(rhs < *this);
+  }
+  bool operator>=(const Node &rhs) const {
+    return !(*this < rhs);
+  }
+};
+
 using Adj = vector<vector<Edge>>;
 constexpr int INF = 0x3f3f3f3f;
 
-vector<int> spfa(const Adj &adj, int s) {
+vector<int> dijkstra(const Adj &adj, int s) {
   auto dis = vector<int>(adj.size(), INF);
-  auto inQueue = vector<bool>(adj.size(), false);
-  auto q = queue<int>();
+  auto vis = vector<int>(adj.size(), false);
+  auto q = priority_queue<Node, deque<Node>, greater<>>();
 
-  q.push(s);
   dis[s] = 0;
-  inQueue[s] = true;
+  q.emplace(s, 0);
 
   while (!q.empty()) {
-    auto u = q.front();
+    auto [u, _] = q.top();
     q.pop();
-    inQueue[u] = false;
-
+    if (vis[u]) { continue; }
+    vis[u] = true;
     for (const auto &[v, w] : adj[u]) {
       if (dis[u] + w < dis[v]) {
         dis[v] = dis[u] + w;
-        if (!inQueue[v]) {
-          q.push(v);
-          inQueue[v] = true;
-        }
-
+        q.emplace(v, dis[v]);
       }
     }
   }
@@ -53,7 +66,7 @@ int main() {
     v--;
     adj[u].emplace_back(v, w);
   }
-  auto dis = spfa(adj, s);
+  auto dis = dijkstra(adj, s);
   for (auto &d : dis) {
     printf("%d ", d == INF ? 0x7fffffff : d);
   }
