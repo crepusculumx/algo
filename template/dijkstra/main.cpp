@@ -30,7 +30,7 @@ struct Node {
 using Adj = vector<vector<Edge>>;
 constexpr int INF = 0x3f3f3f3f;
 
-vector<int> dijkstra(const Adj &adj, int s) {
+vector<int> Dijkstra(const Adj &adj, int s) {
   auto dis = vector<int>(adj.size(), INF);
   auto vis = vector<int>(adj.size(), false);
   auto q = priority_queue<Node, deque<Node>, greater<>>();
@@ -66,7 +66,7 @@ int main() {
     v--;
     adj[u].emplace_back(v, w);
   }
-  auto dis = dijkstra(adj, s);
+  auto dis = Dijkstra(adj, s);
   for (auto &d : dis) {
     printf("%d ", d == INF ? 0x7fffffff : d);
   }

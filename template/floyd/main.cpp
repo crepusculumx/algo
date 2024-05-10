@@ -6,7 +6,7 @@ using namespace std;
 using AdjMatrix = vector<vector<int>>;
 constexpr int INF = 0x3f3f3f3f;
 
-vector<vector<int>> floyd(const AdjMatrix &adj) {
+vector<vector<int>> Floyd(const AdjMatrix &adj) {
   auto n = adj.size();
   auto dp1 = adj;
   auto dp2 = adj;
@@ -38,7 +38,7 @@ int main() {
     adj[u][v] = min(adj[u][v], w); // 重边
     adj[v][u] = min(adj[v][u], w);
   }
-  auto res = floyd(adj);
+  auto res = Floyd(adj);
   for (int i = 0; i < n; ++i) {
     for (int j = 0; j < n; ++j) {
       cout << res[i][j] << " ";

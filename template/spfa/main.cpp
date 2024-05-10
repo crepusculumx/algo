@@ -12,26 +12,26 @@ struct Edge {
 using Adj = vector<vector<Edge>>;
 constexpr int INF = 0x3f3f3f3f;
 
-vector<int> spfa(const Adj &adj, int s) {
+vector<int> Spfa(const Adj &adj, int s) {
   auto dis = vector<int>(adj.size(), INF);
-  auto inQueue = vector<bool>(adj.size(), false);
+  auto in_que = vector<bool>(adj.size(), false);
   auto q = queue<int>();
 
   q.push(s);
   dis[s] = 0;
-  inQueue[s] = true;
+  in_que[s] = true;
 
   while (!q.empty()) {
     auto u = q.front();
     q.pop();
-    inQueue[u] = false;
+    in_que[u] = false;
 
     for (const auto &[v, w] : adj[u]) {
       if (dis[u] + w < dis[v]) {
         dis[v] = dis[u] + w;
-        if (!inQueue[v]) {
+        if (!in_que[v]) {
           q.push(v);
-          inQueue[v] = true;
+          in_que[v] = true;
         }
 
       }
@@ -53,9 +53,9 @@ int main() {
     v--;
     adj[u].emplace_back(v, w);
   }
-  auto dis = spfa(adj, s);
+  auto dis = Spfa(adj, s);
   for (auto &d : dis) {
-    printf("%d ", d == INF ? 0x7fffffff : d);
+    cout << (d == INF ? 0x7fffffff : d);
   }
   return 0;
 }
