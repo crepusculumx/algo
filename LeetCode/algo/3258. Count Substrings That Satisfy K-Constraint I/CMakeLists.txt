@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.29)
+project(3258__Count_Substrings_That_Satisfy_K_Constraint_I)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(3258__Count_Substrings_That_Satisfy_K_Constraint_I main.cpp)
