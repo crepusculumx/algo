@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.29)
+project(3239__Minimum_Number_of_Flips_to_Make_Binary_Grid_Palindromic_I)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(3239__Minimum_Number_of_Flips_to_Make_Binary_Grid_Palindromic_I main.cpp)
